@@ -1,6 +1,6 @@
 ## Rain Simulation, using raylib!
 
-This project uses raylib to create a simple "rain" effect.
+This project uses raylib to create a simple "raindrop" effect.
 
 I originally did this in Go and a lot of people seemed to like it. 
 
