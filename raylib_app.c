@@ -3,7 +3,6 @@
 
 #define MAX_DROPS 200
 
-// Structure to represent a raindrop
 typedef struct {
     Vector2 position;
     float speed;
