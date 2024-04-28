@@ -2,8 +2,19 @@
 
 ![](https://github.com/Sieep-Coding/snow-simulation/blob/master/snow.gif)
 
-## Snow Simulation, using raylib!
+## Relaxing Snow Simulation, using raylib!
 
-This project uses raylib to create a simple "snowfall" effect.
+This is a simple rain simulation application built using the Raylib library in C. 
 
-I originally did this in Go and a lot of people seemed to like it. 
+The application creates a relaxing rain effect with customizable rain color, drop size, and density.
+Features
+
+- Adjustable rain color
+- Customizable raindrop size
+- Adjustable rain density
+- Wind effect for realistic rain movement
+
+### Prerequisites
+
+- C compiler (e.g., GCC)
+- Raylib library
