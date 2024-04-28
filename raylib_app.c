@@ -6,12 +6,13 @@
 typedef struct {
     Vector2 position;
     float speed;
+    float windSpeed;
     Color color;
 } Raindrop;
 
 int main(void)
 {
-    const int screenWidth = 800;
+    const int screenWidth = 700;
     const int screenHeight = 450;
 
     InitWindow(screenWidth, screenHeight, "Relaxing Rain Application");
@@ -21,7 +22,8 @@ int main(void)
         drops[i].position.x = GetRandomValue(0, screenWidth);
         drops[i].position.y = GetRandomValue(-screenHeight, 0);
         drops[i].speed = (float)GetRandomValue(50, 100) / 100.0f; 
-        drops[i].color = WHITE;
+        drops[i].color = (Color){ GetRandomValue(100, 200), GetRandomValue(100, 200), GetRandomValue(200, 255), 255 };
+        drops[i].windSpeed = (float)GetRandomValue(-50, 50) / 100.0f;
     }
 
     SetTargetFPS(60); 
@@ -34,6 +36,8 @@ int main(void)
             if (drops[i].position.y > screenHeight) {
                 drops[i].position.y = GetRandomValue(-screenHeight, 0);
                 drops[i].position.x = GetRandomValue(0, screenWidth);
+                drops[i].position.y += drops[i].speed;
+                drops[i].position.x += drops[i].windSpeed;
             }
         }
         // Draw
