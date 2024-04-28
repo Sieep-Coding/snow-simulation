@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include <stdlib.h>
 
-#define MAX_DROPS 200
+#define MAX_DROPS 300
 
 typedef struct {
     Vector2 position;
