@@ -7,10 +7,9 @@ typedef struct {
     Vector2 position;
     float speed;
     float windSpeed;
-    Color color;
 } Raindrop;
 
-Color rainColor = BLUE;
+Color rainColor = (Color){0, 0, 0, 200};
 int rainDropSize = 10;
 int rainDensity = MAX_DROPS;
 
@@ -40,7 +39,7 @@ int main(void)
     const int screenWidth = 900;
     const int screenHeight = 750;
 
-    InitWindow(screenWidth, screenHeight, "Relaxing Rain Application");
+    InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
 
     Raindrop drops[MAX_DROPS];
 
@@ -48,7 +47,6 @@ int main(void)
         drops[i].position.x = GetRandomValue(0, screenWidth);
         drops[i].position.y = GetRandomValue(-screenHeight, 0);
         drops[i].speed = (float)GetRandomValue(50, 100) / 100.0f;
-        drops[i].color = (Color){ GetRandomValue(100, 200), GetRandomValue(100, 200), GetRandomValue(200, 255), 255 };
         drops[i].windSpeed = (float)GetRandomValue(-50, 50) / 100.0f;
     }
 
@@ -71,16 +69,21 @@ int main(void)
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             Vector2 mousePos = GetMousePosition();
+
             Rectangle colorButton = {10, 10, 100, 30};
             if (CheckCollisionPointRec(mousePos, colorButton))
             {
-                rainColor = (Color){ GetRandomValue(100, 250), GetRandomValue(100, 250), GetRandomValue(100, 250), 255 }; // Change rain color to a random value
+                // Cycle through colors when the color button is clicked
+                rainColor = (Color){ (unsigned char)(rainColor.r + 50 > 255 ? 100 : rainColor.r + 50),
+                                      (unsigned char)(rainColor.g + 50 > 255 ? 100 : rainColor.g + 50),
+                                      (unsigned char)(rainColor.b + 50 > 255 ? 100 : rainColor.b + 50),
+                                      255 };
             }
 
             Rectangle sizeButton = {10, 50, 100, 30};
             if (CheckCollisionPointRec(mousePos, sizeButton))
             {
-                rainDropSize = (rainDropSize + 2) % 20; 
+                rainDropSize = (rainDropSize + 2) % 20;
             }
 
             Rectangle densityButton = {10, 90, 100, 30};
@@ -96,8 +99,7 @@ int main(void)
 
         for (int i = 0; i < rainDensity; i++)
         {
-            Rectangle dropRect = {drops[i].position.x, drops[i].position.y, rainDropSize, rainDropSize};
-            DrawRectangleRec(dropRect, drops[i].color);
+            DrawCircle(drops[i].position.x, drops[i].position.y, rainDropSize / 2, rainColor);
         }
 
         DrawUI();
