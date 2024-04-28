@@ -23,7 +23,7 @@ One data structure to define raindrop position, speed, and color.
 typedef struct {
     Vector2 position;
     float speed;
-    Color color;
+    float windSpeed;
 } Raindrop;
 ```
 
