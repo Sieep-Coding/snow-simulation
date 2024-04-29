@@ -4,15 +4,15 @@
 
 ## Relaxing Snow Simulation, using raylib!
 
-This is a simple rain simulation application built using the Raylib library in C. 
+This is a simple snow simulation application built using the Raylib library in C. 
 
-The application creates a relaxing rain effect with customizable rain color, drop size, and density.
+The application creates a relaxing snow effect with customizable dnow color, drop size, and density.
 Features
 
-- Adjustable rain color
-- Customizable raindrop size
-- Adjustable rain density
-- Wind effect for realistic rain movement
+- Adjustable snow color
+- Customizable snowdrop size
+- Adjustable snow density
+- Wind effect for realistic snow movement
 
 ### Prerequisites
 
