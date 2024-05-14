@@ -1,17 +1,17 @@
 #include "raylib.h"
 #include <stdlib.h>
 
-#define MAX_DROPS 300
+#define MAX_DROPS 400
 
 typedef struct {
    Vector2 position;
    float speed;
    float windSpeed;
-} Raindrop;
+} snowdrop;
 
-Color rainColor = (Color){0, 0, 0, 200};
-int rainDropSize = 10;
-int rainDensity = MAX_DROPS;
+Color snowColor = (Color){0, 0, 0, 200};
+int snowDropSize = 10;
+int snowDensity = MAX_DROPS;
 
 void DrawUI()
 {
@@ -22,20 +22,20 @@ void DrawUI()
    DrawRectangle(padding, padding, 200, 120, (Color){0, 0, 0, 200});
 
    Vector2 colorButtonPos = {padding + 10, padding + 10};
-   DrawRectangleRec((Rectangle){colorButtonPos.x, colorButtonPos.y, buttonWidth, buttonHeight}, rainColor);
-   DrawText("Rain Color", colorButtonPos.x + buttonWidth / 2 - MeasureText("Rain Color", 10) / 2, colorButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
+   DrawRectangleRec((Rectangle){colorButtonPos.x, colorButtonPos.y, buttonWidth, buttonHeight}, snowColor);
+   DrawText("snow Color", colorButtonPos.x + buttonWidth / 2 - MeasureText("snow Color", 10) / 2, colorButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 
    Vector2 sizeButtonPos = {padding + 10, padding + 50};
    DrawRectangle(sizeButtonPos.x, sizeButtonPos.y, buttonWidth, buttonHeight, GRAY);
-   DrawText(TextFormat("Drop Size: %02d", rainDropSize), sizeButtonPos.x + buttonWidth / 2 - MeasureText(TextFormat("Drop Size: %02d", rainDropSize), 10) / 2, sizeButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
+   DrawText(TextFormat("Drop Size: %02d", snowDropSize), sizeButtonPos.x + buttonWidth / 2 - MeasureText(TextFormat("Drop Size: %02d", snowDropSize), 10) / 2, sizeButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 
    Vector2 densityButtonPos = {padding + 10, padding + 90};
    DrawRectangle(densityButtonPos.x, densityButtonPos.y, buttonWidth, buttonHeight, GRAY);
-   DrawText(TextFormat("Density: %03d", rainDensity), densityButtonPos.x + buttonWidth / 2 - MeasureText(TextFormat("Density: %03d", rainDensity), 10) / 2, densityButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
+   DrawText(TextFormat("Density: %03d", snowDensity), densityButtonPos.x + buttonWidth / 2 - MeasureText(TextFormat("Density: %03d", snowDensity), 10) / 2, densityButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 
    Vector2 windSpeedButtonPos = {padding + 10, padding + 130};
    DrawRectangle(windSpeedButtonPos.x, windSpeedButtonPos.y, buttonWidth, buttonHeight, GRAY);
-   DrawText("Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Wind Speed", 10) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
+   DrawText("Change Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Change Wind Speed", 8) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 }
 
 int main(void)
@@ -45,7 +45,7 @@ int main(void)
 
    InitWindow(screenWidth, screenHeight, "R-Snow");
 
-   Raindrop drops[MAX_DROPS];
+   snowdrop drops[MAX_DROPS];
 
    for (int i = 0; i < MAX_DROPS; i++) {
        drops[i].position.x = GetRandomValue(0, screenWidth);
@@ -62,7 +62,7 @@ int main(void)
            drops[i].position.y += drops[i].speed;
            drops[i].position.x += drops[i].windSpeed;
 
-           // If a raindrop reaches the bottom, reset its position to the top
+           // If a snowdrop reaches the bottom, reset its position to the top
            if (drops[i].position.y > screenHeight) {
                drops[i].position.y = GetRandomValue(-screenHeight, 0);
                drops[i].position.x = GetRandomValue(0, screenWidth);
@@ -78,22 +78,22 @@ int main(void)
            if (CheckCollisionPointRec(mousePos, colorButton))
            {
                // Cycle through colors when the color button is clicked
-               rainColor = (Color){ (unsigned char)(rainColor.r + 50 > 255 ? 100 : rainColor.r + 50),
-                                     (unsigned char)(rainColor.g + 50 > 255 ? 100 : rainColor.g + 50),
-                                     (unsigned char)(rainColor.b + 50 > 255 ? 100 : rainColor.b + 50),
+               snowColor = (Color){ (unsigned char)(snowColor.r + 50 > 255 ? 100 : snowColor.r + 50),
+                                     (unsigned char)(snowColor.g + 50 > 255 ? 100 : snowColor.g + 50),
+                                     (unsigned char)(snowColor.b + 50 > 255 ? 100 : snowColor.b + 50),
                                      255 };
            }
 
            Rectangle sizeButton = {10, 50, 100, 30};
            if (CheckCollisionPointRec(mousePos, sizeButton))
            {
-               rainDropSize = (rainDropSize + 2) % 20;
+               snowDropSize = (snowDropSize + 2) % 20;
            }
 
            Rectangle densityButton = {10, 90, 100, 30};
            if (CheckCollisionPointRec(mousePos, densityButton))
            {
-               rainDensity = (rainDensity + 25) % (MAX_DROPS + 1);
+               snowDensity = (snowDensity + 25) % (MAX_DROPS + 1);
            }
 
            Rectangle windSpeedButton = {10, 130, 100, 30};
@@ -110,9 +110,9 @@ int main(void)
        BeginDrawing();
        ClearBackground(BLACK);
 
-       for (int i = 0; i < rainDensity; i++)
+       for (int i = 0; i < snowDensity; i++)
        {
-           DrawCircle(drops[i].position.x, drops[i].position.y, rainDropSize / 2, rainColor);
+           DrawCircle(drops[i].position.x, drops[i].position.y, snowDropSize / 2, snowColor);
        }
 
        DrawUI();
