@@ -1,27 +1,13 @@
-# Makefile for raylib application
-
-# Compiler
 CC = gcc
-
-# Compiler flags
 CFLAGS = -Wall -Wextra -std=c99
+LDFLAGS = -lraylib -lm -lpthread -ldl -lGL -lX11
 
-# raylib library flags
-LIBS = -lraylib -lm
+TARGET = snowfall
 
-# Source files
-SRCS = raylib_app.c
+all: $(TARGET)
 
-# Executable name
-EXEC = raylib_app
-
-all: $(EXEC)
-
-$(EXEC): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(EXEC) $(LIBS)
-
-run: $(EXEC)
-	./$(EXEC)
+$(TARGET): raylib_app.c
+	$(CC) $(CFLAGS) -o $(TARGET) raylib_app.c $(LDFLAGS)
 
 clean:
-	rm -f $(EXEC)
+	rm -f $(TARGET)
