@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include <stdlib.h>
 
-#define MAX_DROPS 400
+#define MAX_DROPS 300
 
 typedef struct {
    Vector2 position;
@@ -35,7 +35,7 @@ void DrawUI()
 
    Vector2 windSpeedButtonPos = {padding + 10, padding + 130};
    DrawRectangle(windSpeedButtonPos.x, windSpeedButtonPos.y, buttonWidth, buttonHeight, GRAY);
-   DrawText("Change Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Change Wind Speed", 8) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
+   DrawText("Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Wind Speed", 10) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 }
 
 int main(void)
@@ -43,7 +43,7 @@ int main(void)
    const int screenWidth = 900;
    const int screenHeight = 750;
 
-   InitWindow(screenWidth, screenHeight, "R-Snow");
+   InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
 
    snowdrop drops[MAX_DROPS];
 
