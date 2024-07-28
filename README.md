@@ -1,4 +1,4 @@
-## See it in action - Last Updated on 5/14/2024
+## Example Video - Last Updated on 5/14/2024
 
 ![](https://github.com/Sieep-Coding/snow-simulation/blob/master/snow.gif)
 
