@@ -19,4 +19,4 @@ The application creates a relaxing snow effect with customizable snow color, dro
 
 - C compiler (e.g., GCC)
 - Raylib library
-- Linux distro (Wayland)
+- Linux
