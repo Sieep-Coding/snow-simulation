@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #define MAX_DROPS 300
+#define MAX_SIZE 10
 
 typedef struct {
     Vector2 position;
@@ -11,7 +12,7 @@ typedef struct {
 } Snowdrop;
 
 Color snowColor = (Color){255, 255, 255, 200};
-int snowDropSize = 10;
+int snowDropSize = MAX_SIZE;
 int snowDensity = MAX_DROPS;
 
 void DrawUI()
