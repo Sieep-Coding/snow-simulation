@@ -40,6 +40,7 @@ void DrawUI()
     DrawText("Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Wind Speed", 10) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 }
 
+
 void DrawSnowflake(Vector2 position, float size, Color color)
 {
     DrawPoly(position, 6, size, GetRandomValue(0, 360), color);
