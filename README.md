@@ -1,6 +1,6 @@
 ![snow-simulation](https://socialify.git.ci/Sieep-Coding/snow-simulation/image?description=1&forks=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
-## Example Video - Last Updated on 5/14/2024
+## Example Video - Last Updated on 12/7/2024
 
 ![](https://github.com/Sieep-Coding/snow-simulation/blob/master/snow.gif)
 
