@@ -2,7 +2,7 @@
 
 ## Example Video - Last Updated on 12/7/2024
 
-![](https://github.com/Sieep-Coding/snow-simulation/blob/master/assets/snow.gif)
+![](https://github.com/Sieep-Coding/snow-simulation/blob/master/snow.gif)
 
 ## Relaxing Snow Simulation, using raylib!
 
