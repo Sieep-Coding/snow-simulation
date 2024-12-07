@@ -1,3 +1,9 @@
+#include <sys/stat.h>
+#include <limits.h>
+#include <string.h>
+
+#define NOB_IMPLEMENTATION
+#include "nob.h"
 #include "raylib.h"
 #include <stdlib.h>
 
@@ -10,6 +16,7 @@ typedef struct {
     float windSpeed;
     float gravity;
 } Snowdrop;
+
 
 Color snowColor = (Color){255, 255, 255, 200};
 int snowDropSize = MAX_SIZE;
@@ -46,12 +53,26 @@ void DrawSnowflake(Vector2 position, float size, Color color)
     DrawPoly(position, 6, size, GetRandomValue(0, 360), color);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-    const int screenWidth = 900;
-    const int screenHeight = 750;
+    NOB_GO_REBUILD_URSELF(argc, argv);
+    Nob_Cmd cmd = {0};
+    nob_cmd_append(&cmd, "gcc",
+                         "-Wall", "-Wextra",
+                         "-std=c99",
+                         "-o", "snowfall",
+                         "raylib_app.c",
+                         "-lraylib",
+                         "-lm", "-lpthread", "-ldl", "-lGL", "-lX11");
+
+    if (!nob_cmd_run_sync(cmd)) return 1;
+
+    const int screenWidth = 1920;
+    const int screenHeight = 1080;
+
 
     InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
+    ToggleFullscreen();
 
     Snowdrop drops[MAX_DROPS];
 
