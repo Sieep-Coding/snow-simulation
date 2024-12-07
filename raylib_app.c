@@ -54,8 +54,8 @@ int main(void)
 
 
     InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
+    
     ToggleFullscreen();
-
     Snowdrop drops[MAX_DROPS];
 
     for (int i = 0; i < MAX_DROPS; i++) {
