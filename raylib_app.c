@@ -1,9 +1,3 @@
-#include <sys/stat.h>
-#include <limits.h>
-#include <string.h>
-
-#define NOB_IMPLEMENTATION
-#include "nob.h"
 #include "raylib.h"
 #include <stdlib.h>
 
@@ -53,20 +47,8 @@ void DrawSnowflake(Vector2 position, float size, Color color)
     DrawPoly(position, 6, size, GetRandomValue(0, 360), color);
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
-    NOB_GO_REBUILD_URSELF(argc, argv);
-    Nob_Cmd cmd = {0};
-    nob_cmd_append(&cmd, "gcc",
-                         "-Wall", "-Wextra",
-                         "-std=c99",
-                         "-o", "snowfall",
-                         "raylib_app.c",
-                         "-lraylib",
-                         "-lm", "-lpthread", "-ldl", "-lGL", "-lX11");
-
-    if (!nob_cmd_run_sync(cmd)) return 1;
-
     const int screenWidth = 1920;
     const int screenHeight = 1080;
 
