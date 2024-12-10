@@ -22,7 +22,6 @@ void DrawUI()
     const int buttonWidth = 100;
     const int buttonHeight = 30;
 
-
     Vector2 colorButtonPos = {padding + 10, padding + 10};
     DrawRectangleRec((Rectangle){colorButtonPos.x, colorButtonPos.y, buttonWidth, buttonHeight}, snowColor);
     DrawText("Snow Color", colorButtonPos.x + buttonWidth / 2 - MeasureText("Snow Color", 10) / 2, colorButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
