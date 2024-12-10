@@ -22,7 +22,6 @@ void DrawUI()
     const int buttonWidth = 100;
     const int buttonHeight = 30;
 
-    DrawRectangle(padding, padding, 200, 150, (Color){0, 0, 0, 200});
 
     Vector2 colorButtonPos = {padding + 10, padding + 10};
     DrawRectangleRec((Rectangle){colorButtonPos.x, colorButtonPos.y, buttonWidth, buttonHeight}, snowColor);
@@ -86,28 +85,27 @@ int main(void)
         {
             Vector2 mousePos = GetMousePosition();
 
-            Rectangle colorButton = {10, 10, 100, 30};
+            Rectangle colorButton = {10, 10, 75, 30};
             if (CheckCollisionPointRec(mousePos, colorButton))
             {
-                // Cycle through shades of gray when the color button is clicked
                 snowColor.r = (snowColor.r + 50 > 255) ? 100 : snowColor.r + 50;
                 snowColor.g = snowColor.r;
                 snowColor.b = snowColor.r;
             }
 
-            Rectangle sizeButton = {10, 50, 100, 30};
+            Rectangle sizeButton = {10, 50, 75, 30};
             if (CheckCollisionPointRec(mousePos, sizeButton))
             {
                 snowDropSize = (snowDropSize + 2) % 20;
             }
 
-            Rectangle densityButton = {10, 90, 100, 30};
+            Rectangle densityButton = {10, 90, 75, 30};
             if (CheckCollisionPointRec(mousePos, densityButton))
             {
                 snowDensity = (snowDensity + 25) % (MAX_DROPS + 1);
             }
 
-            Rectangle windSpeedButton = {10, 130, 100, 30};
+            Rectangle windSpeedButton = {10, 130, 75, 30};
             if (CheckCollisionPointRec(mousePos, windSpeedButton))
             {
                 for (int i = 0; i < MAX_DROPS; i++)
