@@ -9,8 +9,8 @@ typedef struct {
     float speed;
     float windSpeed;
     float gravity;
+    int type;
 } Snowdrop;
-
 
 Color snowColor = (Color){255, 255, 255, 200};
 int snowDropSize = MAX_SIZE;
@@ -40,7 +40,6 @@ void DrawUI()
     DrawText("Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Wind Speed", 10) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 }
 
-
 void DrawSnowflake(Vector2 position, float size, Color color)
 {
     DrawPoly(position, 6, size, GetRandomValue(0, 360), color);
@@ -50,7 +49,6 @@ int main(void)
 {
     const int screenWidth = 1920;
     const int screenHeight = 1080;
-
 
     InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
     
