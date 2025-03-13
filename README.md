@@ -4,7 +4,7 @@
 
 ![](https://github.com/Sieep-Coding/snow-simulation/blob/master/snow.gif)
 
-## Relaxing Snow Simulation, using raylib!
+## Relaxing Snow Simulation, using [raylib](https://www.raylib.com/)
 
 This is a simple snow simulation application built using the Raylib library in C.
 
@@ -16,6 +16,7 @@ The application creates a relaxing snow effect with customizable snow color, dro
 - Customizable snowdrop size
 - Adjustable snow density
 - Wind effect for realistic snow movement
+- Toggle music created by me!
 
 ### Prerequisites
 
