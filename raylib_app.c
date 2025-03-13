@@ -37,6 +37,10 @@ void DrawUI()
     Vector2 windSpeedButtonPos = {padding + 10, padding + 130};
     DrawRectangle(windSpeedButtonPos.x, windSpeedButtonPos.y, buttonWidth, buttonHeight, GRAY);
     DrawText("Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Wind Speed", 10) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
+
+    Vector2 toggleMusicPos = {padding + 10, padding + 170};
+    DrawRectangle(toggleMusicPos.x, toggleMusicPos.y, buttonWidth, buttonHeight, GRAY);
+    DrawText("Toggle Music", toggleMusicPos.x + buttonWidth / 2 - MeasureText("Toggle Music", 10) / 2, toggleMusicPos.y + buttonHeight / 2 - 5, 10, WHITE);
 }
 
 void DrawSnowflake(Vector2 position, float size, Color color)
@@ -46,12 +50,15 @@ void DrawSnowflake(Vector2 position, float size, Color color)
 
 int main(void)
 {
-    const int screenWidth = 1920;
-    const int screenHeight = 1080;
-
+    const int screenWidth = 854;
+    const int screenHeight = 480;
+    
     InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
     
-    ToggleFullscreen();
+    InitAudioDevice();
+    Music sampleSong = LoadMusicStream("mp3/christmas.mp3");
+    //ToggleFullscreen();
+    
     Snowdrop drops[MAX_DROPS];
 
     for (int i = 0; i < MAX_DROPS; i++) {
@@ -95,7 +102,7 @@ int main(void)
             {
                 snowDropSize = (snowDropSize + 2) % 20;
             }
-
+            
             Rectangle densityButton = {10, 90, 75, 30};
             if (CheckCollisionPointRec(mousePos, densityButton))
             {
@@ -108,6 +115,15 @@ int main(void)
                 for (int i = 0; i < MAX_DROPS; i++)
                 {
                     drops[i].windSpeed = (float)GetRandomValue(-100, 100) / 100.0f;
+                }
+            }
+            
+            Rectangle toggleMusicButton = {10, 170, 75, 30};
+            if (CheckCollisionPointRec(mousePos, toggleMusicButton))
+            {
+                PlayMusicStream(sampleSong);
+                while (IsMusicStreamPlaying(sampleSong)) {
+                    UpdateMusicStream(sampleSong);
                 }
             }
         }
@@ -125,6 +141,10 @@ int main(void)
 
         EndDrawing();
     }
+
+    UnloadMusicStream(sampleSong);
+
+    CloseAudioDevice();
 
     CloseWindow();
 
