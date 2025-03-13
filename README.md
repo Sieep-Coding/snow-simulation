@@ -1,5 +1,10 @@
 ![snow-simulation](https://socialify.git.ci/Sieep-Coding/snow-simulation/image?description=1&forks=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
+
+> [!WARNING]  
+> Some features may not work correctly on Windows, WSL.
+> Only tested on Linux Mint with GCC.
+
 ## Example Video - Last Updated on 12/7/2024
 
 ![](https://github.com/Sieep-Coding/snow-simulation/blob/master/snow.gif)
@@ -20,6 +25,6 @@ The application creates a relaxing snow effect with customizable snow color, dro
 
 ### Prerequisites
 
-- C compiler (e.g., GCC)
-- Raylib library
+- C compiler (e.g., [GCC](https://gcc.gnu.org/))
+- [Raylib library](https://www.raylib.com/)
 - Linux
