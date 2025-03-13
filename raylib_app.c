@@ -28,12 +28,6 @@ void DrawUI()
     DrawText("Toggle Music", playMusicPos.x + buttonWidth / 2 - MeasureText("Toggle Music", 10) / 2, playMusicPos.y + buttonHeight / 2 - 5, 11, WHITE);
 }
 
-void DrawSnowflake(Vector2 position, float size, Color color)
-{
-    DrawPoly(position, 6, size, GetRandomValue(0, 360), color);
-}
-
-
 int main(void)
 {
     const int screenWidth = 854;
@@ -69,8 +63,7 @@ int main(void)
                 drops[i].position.x = GetRandomValue(0, screenWidth);
             }
         }
-
-        
+  
         // user input
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
