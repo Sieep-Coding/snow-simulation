@@ -1,21 +1,5 @@
-#include "raylib.h"
+#include "raylib_app.h"
 #include <stdlib.h>
-
-#define MAX_DROPS 300
-#define MAX_SIZE 10
-
-typedef struct {
-    Vector2 position;
-    float speed;
-    float windSpeed;
-    float gravity;
-    int type;
-} Snowdrop;
-
-Color snowColor = (Color){255, 255, 255, 200};
-int snowDropSize = MAX_SIZE;
-int snowDensity = MAX_DROPS;
-bool soundPlaying = false;
 
 void DrawUI()
 {
