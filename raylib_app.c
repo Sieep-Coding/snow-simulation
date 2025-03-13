@@ -15,6 +15,7 @@ typedef struct {
 Color snowColor = (Color){255, 255, 255, 200};
 int snowDropSize = MAX_SIZE;
 int snowDensity = MAX_DROPS;
+bool soundPlaying = false;
 
 void DrawUI()
 {
@@ -38,15 +39,16 @@ void DrawUI()
     DrawRectangle(windSpeedButtonPos.x, windSpeedButtonPos.y, buttonWidth, buttonHeight, GRAY);
     DrawText("Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Wind Speed", 10) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
 
-    Vector2 toggleMusicPos = {padding + 10, padding + 170};
-    DrawRectangle(toggleMusicPos.x, toggleMusicPos.y, buttonWidth, buttonHeight, GRAY);
-    DrawText("Toggle Music", toggleMusicPos.x + buttonWidth / 2 - MeasureText("Toggle Music", 10) / 2, toggleMusicPos.y + buttonHeight / 2 - 5, 10, WHITE);
+    Vector2 playMusicPos = {padding + 10, padding + 170};
+    DrawRectangle(playMusicPos.x, playMusicPos.y, buttonWidth, buttonHeight, GRAY);
+    DrawText("Toggle Music", playMusicPos.x + buttonWidth / 2 - MeasureText("Toggle Music", 10) / 2, playMusicPos.y + buttonHeight / 2 - 5, 11, WHITE);
 }
 
 void DrawSnowflake(Vector2 position, float size, Color color)
 {
     DrawPoly(position, 6, size, GetRandomValue(0, 360), color);
 }
+
 
 int main(void)
 {
@@ -56,7 +58,7 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
     
     InitAudioDevice();
-    Music sampleSong = LoadMusicStream("mp3/christmas.mp3");
+    Sound sound = LoadSound("mp3/christmas.mp3");
     //ToggleFullscreen();
     
     Snowdrop drops[MAX_DROPS];
@@ -84,6 +86,7 @@ int main(void)
             }
         }
 
+        
         // user input
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
@@ -118,12 +121,18 @@ int main(void)
                 }
             }
             
-            Rectangle toggleMusicButton = {10, 170, 75, 30};
-            if (CheckCollisionPointRec(mousePos, toggleMusicButton))
+            Rectangle playMusicButton = {10, 170, 75, 30};
+            if (CheckCollisionPointRec(mousePos, playMusicButton))
             {
-                PlayMusicStream(sampleSong);
-                while (IsMusicStreamPlaying(sampleSong)) {
-                    UpdateMusicStream(sampleSong);
+                if (soundPlaying) 
+                {
+                    soundPlaying = false;
+                    StopSound(sound);
+                } 
+                else
+                {
+                    soundPlaying = true;
+                    PlaySound(sound);
                 }
             }
         }
@@ -142,7 +151,7 @@ int main(void)
         EndDrawing();
     }
 
-    UnloadMusicStream(sampleSong);
+    UnloadSound(sound);
 
     CloseAudioDevice();
 
