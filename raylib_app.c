@@ -1,20 +1,5 @@
-#include "raylib.h"
+#include "raylib_app.h"
 #include <stdlib.h>
-
-#define MAX_DROPS 300
-#define MAX_SIZE 10
-
-typedef struct {
-    Vector2 position;
-    float speed;
-    float windSpeed;
-    float gravity;
-    int type;
-} Snowdrop;
-
-Color snowColor = (Color){255, 255, 255, 200};
-int snowDropSize = MAX_SIZE;
-int snowDensity = MAX_DROPS;
 
 void DrawUI()
 {
@@ -37,21 +22,24 @@ void DrawUI()
     Vector2 windSpeedButtonPos = {padding + 10, padding + 130};
     DrawRectangle(windSpeedButtonPos.x, windSpeedButtonPos.y, buttonWidth, buttonHeight, GRAY);
     DrawText("Wind Speed", windSpeedButtonPos.x + buttonWidth / 2 - MeasureText("Wind Speed", 10) / 2, windSpeedButtonPos.y + buttonHeight / 2 - 5, 10, WHITE);
-}
 
-void DrawSnowflake(Vector2 position, float size, Color color)
-{
-    DrawPoly(position, 6, size, GetRandomValue(0, 360), color);
+    Vector2 playMusicPos = {padding + 10, padding + 170};
+    DrawRectangle(playMusicPos.x, playMusicPos.y, buttonWidth, buttonHeight, GRAY);
+    DrawText("Toggle Music", playMusicPos.x + buttonWidth / 2 - MeasureText("Toggle Music", 10) / 2, playMusicPos.y + buttonHeight / 2 - 5, 11, WHITE);
 }
 
 int main(void)
 {
-    const int screenWidth = 1920;
-    const int screenHeight = 1080;
-
+    const int screenWidth = 854;
+    const int screenHeight = 480;
+    
     InitWindow(screenWidth, screenHeight, "Relaxing Snow Application");
     
-    ToggleFullscreen();
+    InitAudioDevice();
+    Sound sound = LoadSound("mp3/christmas.mp3");
+    SetSoundVolume(sound, 10);
+    //ToggleFullscreen();
+    
     Snowdrop drops[MAX_DROPS];
 
     for (int i = 0; i < MAX_DROPS; i++) {
@@ -76,7 +64,7 @@ int main(void)
                 drops[i].position.x = GetRandomValue(0, screenWidth);
             }
         }
-
+  
         // user input
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
@@ -95,7 +83,7 @@ int main(void)
             {
                 snowDropSize = (snowDropSize + 2) % 20;
             }
-
+            
             Rectangle densityButton = {10, 90, 75, 30};
             if (CheckCollisionPointRec(mousePos, densityButton))
             {
@@ -108,6 +96,21 @@ int main(void)
                 for (int i = 0; i < MAX_DROPS; i++)
                 {
                     drops[i].windSpeed = (float)GetRandomValue(-100, 100) / 100.0f;
+                }
+            }
+            
+            Rectangle playMusicButton = {10, 170, 75, 30};
+            if (CheckCollisionPointRec(mousePos, playMusicButton))
+            {
+                if (soundPlaying) 
+                {
+                    soundPlaying = false;
+                    StopSound(sound);
+                } 
+                else
+                {
+                    soundPlaying = true;
+                    PlaySound(sound);
                 }
             }
         }
@@ -125,6 +128,10 @@ int main(void)
 
         EndDrawing();
     }
+
+    UnloadSound(sound);
+
+    CloseAudioDevice();
 
     CloseWindow();
 
