@@ -37,6 +37,7 @@ int main(void)
     
     InitAudioDevice();
     Sound sound = LoadSound("mp3/christmas.mp3");
+    SetSoundVolume(sound, 10);
     //ToggleFullscreen();
     
     Snowdrop drops[MAX_DROPS];
