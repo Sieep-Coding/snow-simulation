@@ -46,7 +46,8 @@ int main(void)
     
     Snowdrop drops[MAX_DROPS];
 
-    for (int i = 0; i < MAX_DROPS; i++) {
+    for (int i = 0; i < MAX_DROPS; i++) 
+    {
         drops[i].position.x = GetRandomValue(0, screenWidth);
         drops[i].position.y = GetRandomValue(-screenHeight, 0);
         drops[i].speed = (float)GetRandomValue(50, 100) / 100.0f;
@@ -58,12 +59,14 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        for (int i = 0; i < MAX_DROPS; i++) {
+        for (int i = 0; i < MAX_DROPS; i++) 
+        {
             drops[i].position.y += drops[i].speed * drops[i].gravity;
             drops[i].position.x += drops[i].windSpeed;
 
             // If a snowdrop reaches the bottom, reset its position to the top
-            if (drops[i].position.y > screenHeight) {
+            if (drops[i].position.y > screenHeight) 
+            {
                 drops[i].position.y = GetRandomValue(-screenHeight, 0);
                 drops[i].position.x = GetRandomValue(0, screenWidth);
             }
