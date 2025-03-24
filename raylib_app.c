@@ -25,7 +25,11 @@ void DrawUI()
 
     Vector2 playMusicPos = {padding + 10, padding + 170};
     DrawRectangle(playMusicPos.x, playMusicPos.y, buttonWidth, buttonHeight, GRAY);
-    DrawText("Toggle Music", playMusicPos.x + buttonWidth / 2 - MeasureText("Toggle Music", 10) / 2, playMusicPos.y + buttonHeight / 2 - 5, 11, WHITE);
+    DrawText("Toggle Music", playMusicPos.x + buttonWidth / 2 - MeasureText("Toggle Music", 10) / 2, playMusicPos.y + buttonHeight / 2 - 5, 10, WHITE);
+
+    Vector2 uniqueColors = {padding + 10, padding + 210};
+    DrawRectangle(uniqueColors.x, uniqueColors.y, buttonWidth, buttonHeight, snowColor);
+    DrawText("Fun Colors", uniqueColors.x + buttonWidth / 2 - MeasureText("Fun Colors", 10) / 2, uniqueColors.y + buttonHeight / 2 - 5, 10, WHITE);
 }
 
 int main(void)
@@ -38,7 +42,7 @@ int main(void)
     InitAudioDevice();
     Sound sound = LoadSound("mp3/christmas.mp3");
     SetSoundVolume(sound, 10);
-    //ToggleFullscreen();
+    ToggleFullscreen();
     
     Snowdrop drops[MAX_DROPS];
 
@@ -111,6 +115,18 @@ int main(void)
                 {
                     soundPlaying = true;
                     PlaySound(sound);
+                }
+            }
+            Rectangle uniqueColorsButton = {10, 210, 75, 30};
+            if (CheckCollisionPointRec(mousePos, uniqueColorsButton))
+            {
+                int colorSize = sizeof(colors) / sizeof(colors[0]);
+                
+                snowColor = colors[colorIndex];
+                colorIndex++;
+                if (colorIndex >= colorSize)
+                {
+                    colorIndex = 0;
                 }
             }
         }
