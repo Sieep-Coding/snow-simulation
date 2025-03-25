@@ -156,10 +156,12 @@ int main(void)
 
             /*
                 Make sure this is always on the bottom.
-                The second integer in the Rectangle is the height!
+                The second integer in the Rectangle struct
+                is the height!
                 
-                This logic needs to get expand upon whenever there is
-                a new feature that effects the Snowflake Polygon.
+                Also, this logic needs to get expand upon whenever 
+                there is a new feature that effects 
+                the Snowflake polygon.
             */
             Rectangle resetButton = {10, 290, 75, 30};
             if (CheckCollisionPointRec(mousePos, resetButton))
