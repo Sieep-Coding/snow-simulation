@@ -23,7 +23,6 @@ The snowflakes are rendered using a polygon-based system, with each drop affecte
 
 The simulation runs at 60 FPS.
 
-![snow-simulation](https://socialify.git.ci/Sieep-Coding/snow-simulation/image?description=1&forks=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
 > [!WARNING]  
 > Some features may not work correctly on Windows, WSL.
@@ -38,3 +37,5 @@ The simulation runs at 60 FPS.
 - C compiler (e.g., [GCC](https://gcc.gnu.org/))
 - [Raylib library](https://www.raylib.com/)
 - Linux
+
+![snow-simulation](https://socialify.git.ci/Sieep-Coding/snow-simulation/image?description=1&forks=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
