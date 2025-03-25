@@ -1,4 +1,4 @@
-## Relaxing Snow Simulation, using [raylib](https://www.raylib.com/)
+# Relaxing Snow Simulation, using [raylib](https://www.raylib.com/)
 
 This application is a relaxing snow simulation built using the raylib library in C. 
 
