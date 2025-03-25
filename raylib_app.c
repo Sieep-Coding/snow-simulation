@@ -34,6 +34,14 @@ void DrawUI()
     Vector2 blizzardModePos = {padding + 10, padding + 250};
     DrawRectangle(blizzardModePos.x, blizzardModePos.y, buttonWidth, buttonHeight, GRAY);
     DrawText("Blizzard!", blizzardModePos.x + buttonWidth / 2 - MeasureText("Blizzard!", 10) / 2, blizzardModePos.y + buttonHeight / 2 - 5, 10, WHITE);
+
+    /*
+        Make sure this is always on the bottom of the UI.
+        The reset button makes sense on the bottom to me.
+    */
+    Vector2 resetButtonPos = {padding + 10, padding + 290};
+    DrawRectangle(resetButtonPos.x, resetButtonPos.y, buttonWidth, buttonHeight, GRAY);
+    DrawText("Reset", resetButtonPos.x + buttonWidth / 2 - MeasureText("Reset", 10) / 2, resetButtonPos.y + buttonHeight / 2 - 5, 10, RAYWHITE);
 }
 
 int main(void)
@@ -143,6 +151,32 @@ int main(void)
                 {
                     drops[i].speed = 135 / 100.0f;
                     drops[i].gravity = 135 / 100.0f;
+                }
+            }
+
+            /*
+                Make sure this is always on the bottom.
+                The second integer in the Rectangle is the height!
+                
+                This logic needs to get expand upon whenever there is
+                a new feature that effects the Snowflake Polygon.
+            */
+            Rectangle resetButton = {10, 290, 75, 30};
+            if (CheckCollisionPointRec(mousePos, resetButton))
+            {
+                if (soundPlaying == true)
+                {
+                    StopSound(sound);
+                }
+
+                snowDropSize = 10;
+                snowDensity = MAX_DROPS;
+
+                snowColor = (Color){255, 255, 255, 200};                
+
+                for (int i = 0; i < MAX_DROPS; i++)
+                {
+                    drops[i].windSpeed = (float)GetRandomValue(-50, 50) / 100.0f;
                 }
             }
         }
