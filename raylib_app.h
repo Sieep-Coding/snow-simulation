@@ -15,6 +15,7 @@ typedef struct
 } Snowdrop;
 
 Color snowColor = (Color){255, 255, 255, 200};
+Color currentBackgroundColor = BLACK;
 
 void DrawSnowflake(Vector2 position, float size, Color color)
 {
@@ -23,8 +24,11 @@ void DrawSnowflake(Vector2 position, float size, Color color)
 
 int snowDropSize = MAX_SIZE;
 int snowDensity = MAX_DROPS;
-bool soundPlaying = false;
 int colorIndex = 0;
+int backgroundIndex = 0;
+bool soundPlaying = false;
+bool blizzardToggle = false;
+
 
 Color colors[] =
     {
@@ -33,5 +37,10 @@ Color colors[] =
         GREEN, LIME, DARKGREEN, SKYBLUE,
         VIOLET, DARKPURPLE, PURPLE,
         BROWN, MAGENTA, RAYWHITE, BEIGE};
-        
+
+Color backgroundColors[] =
+    {
+            BLACK, LIGHTGRAY, GRAY, DARKGRAY, SKYBLUE,
+            BROWN, MAGENTA, RAYWHITE, BEIGE, BLACK};
+
 #endif // RAYLIB_APP_H
