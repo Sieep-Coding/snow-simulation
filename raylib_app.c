@@ -30,6 +30,10 @@ void DrawUI()
     Vector2 uniqueColors = {padding + 10, padding + 210};
     DrawRectangle(uniqueColors.x, uniqueColors.y, buttonWidth, buttonHeight, snowColor);
     DrawText("Fun Colors", uniqueColors.x + buttonWidth / 2 - MeasureText("Fun Colors", 10) / 2, uniqueColors.y + buttonHeight / 2 - 5, 10, WHITE);
+
+    Vector2 blizzardModePos = {padding + 10, padding + 250};
+    DrawRectangle(blizzardModePos.x, blizzardModePos.y, buttonWidth, buttonHeight, GRAY);
+    DrawText("Blizzard!", blizzardModePos.x + buttonWidth / 2 - MeasureText("Blizzard!", 10) / 2, blizzardModePos.y + buttonHeight / 2 - 5, 10, WHITE);
 }
 
 int main(void)
@@ -130,6 +134,16 @@ int main(void)
                 if (colorIndex >= colorSize)
                 {
                     colorIndex = 0;
+                }
+            }
+
+            Rectangle blizzardButton = {10, 250, 75, 30};
+            if (CheckCollisionPointRec(mousePos, blizzardButton))
+            {
+                for (int i = 0; i < MAX_DROPS; i++)\
+                {
+                    drops[i].speed = 135 / 100.0f;
+                    drops[i].gravity = 135 / 100.0f;
                 }
             }
         }
