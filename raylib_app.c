@@ -128,7 +128,6 @@ int main(void)
             if (CheckCollisionPointRec(mousePos, uniqueColorsButton))
             {
                 int colorSize = sizeof(colors) / sizeof(colors[0]);
-                
                 snowColor = colors[colorIndex];
                 colorIndex++;
                 if (colorIndex >= colorSize)
