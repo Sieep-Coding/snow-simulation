@@ -6,7 +6,7 @@ It features a dynamic snowfall effect with customizable settings.
 
 The UI provides interactive controls for adjusting the simulation in real-time.
 
-## Features:
+## Features
 - Change the snow color with a button click.
 
 - Modify snowflake size and density dynamically.
