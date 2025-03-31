@@ -6,10 +6,12 @@ The application creates a relaxing snow effect with customizable snow color, dro
 
 ![snow-simulation](https://socialify.git.ci/Sieep-Coding/snow-simulation/image?description=1&forks=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
+![passing pop os](https://img.shields.io/badge/Pop!_OS-Passing-darkgreen)
+![passing mint](https://img.shields.io/badge/Linux_Mint-Passing-darkgreen)
 
 > [!WARNING]  
 > Some features may not work correctly on Windows, WSL.
-> Only tested on Linux Mint with GCC.
+> Only tested on Linux Mint and Pop!_OS with GCC.
 
 ## Example Video - Last Updated on 12/7/2024
 
