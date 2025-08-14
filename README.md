@@ -1,3 +1,8 @@
+> [!Warning]
+> This code is not maintained here anymore and has moved to GitLab.
+> 
+> For the most up-to-date code, visit the [GitLab](https://gitlab.com/Sieep-Coding/snow-simulation) repository.
+
 ## Relaxing Snow Simulation, using [raylib](https://www.raylib.com/)
 
 This is a simple snow simulation application built using the Raylib library in C.
