@@ -1,6 +1,6 @@
 ## Relaxing Snow Simulation, using [raylib](https://www.raylib.com/)
 
-This is a simple snow simulation application built using the Raylib library in C..
+This is a simple snow simulation application built using the Raylib library in C.
 
 ![snow-simulation](https://socialify.git.ci/Sieep-Coding/snow-simulation/image?description=1&forks=1&language=1&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
