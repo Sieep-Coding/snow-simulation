@@ -31,16 +31,18 @@ bool blizzardToggle = false;
 
 
 Color colors[] =
-    {
+{
         PINK, BLUE, GOLD, RED, LIGHTGRAY,
         GRAY, YELLOW, ORANGE, DARKGRAY,
         GREEN, LIME, DARKGREEN, SKYBLUE,
         VIOLET, DARKPURPLE, PURPLE,
-        BROWN, MAGENTA, RAYWHITE, BEIGE};
+        BROWN, MAGENTA, RAYWHITE, BEIGE
+};
 
 Color backgroundColors[] =
-    {
-            BLACK, LIGHTGRAY, GRAY, DARKGRAY, SKYBLUE,
-            BROWN, MAGENTA, RAYWHITE, BEIGE, BLACK};
+{
+        BLACK, LIGHTGRAY, GRAY, DARKGRAY, SKYBLUE,
+        BROWN, MAGENTA, RAYWHITE, BEIGE, BLACK
+};
 
 #endif // RAYLIB_APP_H
